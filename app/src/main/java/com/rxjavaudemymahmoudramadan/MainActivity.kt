@@ -2,6 +2,11 @@ package com.rxjavaudemymahmoudramadan
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.rxjavaudemymahmoudramadan.di.ApiService
+import com.rxjavaudemymahmoudramadan.di.HttpService
+import com.rxjavaudemymahmoudramadan.di.LocalStore
+import com.rxjavaudemymahmoudramadan.di.LoginManager
+import com.rxjavaudemymahmoudramadan.di.component.DaggerLoginComponent
 import com.rxjavaudemymahmoudramadan.viewmodel.RepoViewModel
 import io.reactivex.Observable
 import io.reactivex.Observer
@@ -78,6 +83,15 @@ class MainActivity : AppCompatActivity() {
         professor.onNext("F")
 
         professor.onComplete()
+
+//        val localStore : LocalStore = LocalStore()
+//        val apiService : ApiService = ApiService()
+//        val loginManager = LoginManager(localStore,apiService)
+//        loginManager.login("mayur","123")
+
+      val loginComponent=  DaggerLoginComponent.builder()
+
+
     }
 
     private fun getFirstStudent():Observer<String>{
