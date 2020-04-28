@@ -7,6 +7,8 @@ import com.rxjavaudemymahmoudramadan.di.HttpService
 import com.rxjavaudemymahmoudramadan.di.LocalStore
 import com.rxjavaudemymahmoudramadan.di.LoginManager
 import com.rxjavaudemymahmoudramadan.di.component.DaggerLoginComponent
+import com.rxjavaudemymahmoudramadan.di.module.HttpServiceModule
+import com.rxjavaudemymahmoudramadan.di.module.LocalStoreModule
 import com.rxjavaudemymahmoudramadan.viewmodel.RepoViewModel
 import io.reactivex.Observable
 import io.reactivex.Observer
@@ -17,6 +19,7 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import java.util.concurrent.Callable
 import java.util.concurrent.TimeUnit
+import javax.inject.Inject
 import kotlin.random.Random
 
 
@@ -26,6 +29,9 @@ class MainActivity : AppCompatActivity() {
 
 
     val logger: Logger = LoggerFactory.getLogger(MainActivity::class.java)
+
+    @Inject
+    lateinit var  loginManager:LoginManager
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -54,10 +60,6 @@ class MainActivity : AppCompatActivity() {
             override fun onComplete() {
                 TODO("Not yet implemented")
             }
-
-
-
-
         })
 
 
@@ -89,7 +91,16 @@ class MainActivity : AppCompatActivity() {
 //        val loginManager = LoginManager(localStore,apiService)
 //        loginManager.login("mayur","123")
 
-      val loginComponent=  DaggerLoginComponent.builder()
+
+        val localStoreModule = LocalStoreModule()
+        val loginComponent=  DaggerLoginComponent.builder().localStoreModule(localStoreModule).build()
+
+        val loginMang =  loginComponent.getLoginManager().login(""," ");
+
+
+//       loginComponent.inject(this)
+
+//        loginManager.login("ramadan", "123")
 
 
     }

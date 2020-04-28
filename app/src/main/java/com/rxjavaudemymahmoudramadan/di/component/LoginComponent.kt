@@ -19,4 +19,5 @@ import dagger.Component
 interface LoginComponent {
 
     fun getLoginManager() : LoginManager
+
 }

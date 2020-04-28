@@ -12,7 +12,6 @@ class LoginManager  @Inject constructor (localStore : LocalStore,httpService:Htt
 
     fun login( username : String, password :String){
 
-
     }
 
     @Inject

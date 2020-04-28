@@ -12,9 +12,16 @@ import dagger.Provides
 
 //@Provides and @Binds are same things
 
-@Module
-abstract class HttpServiceModule {
 
-     @Binds
-     abstract fun bindApiService(httpService :HttpService) : ApiService
+@Module
+open class HttpServiceModule {
+
+      @Provides
+      fun bindApiService() = HttpService()
 }
+//@Module
+//abstract class HttpServiceModule {
+//
+//     @Binds
+//     abstract fun bindApiService(httpService :HttpService) : ApiService
+//}

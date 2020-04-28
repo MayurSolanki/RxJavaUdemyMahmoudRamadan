@@ -9,7 +9,12 @@ import dagger.Provides
  */
 
 @Module
-class LocalStoreModule {
+open class LocalStoreModule {
+
+    init {
+
+    }
+
 
     @Provides
     fun provideLocalStore() = LocalStore()
